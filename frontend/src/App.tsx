@@ -1,5 +1,8 @@
 // TEMPORARY style guide to preview the design tokens in light and dark mode.
 // Replaced by real pages and routing in step 4b.
+import { Button } from './components/ui/Button'
+import { Card } from './components/ui/Card'
+import { Input } from './components/ui/Input'
 
 const swatches = [
   ['background', 'bg-background'],
@@ -27,13 +30,13 @@ function App() {
             Temporary preview of the light and dark themes.
           </p>
         </div>
-        <button
-          type="button"
+        <Button
+          variant='outline'
+          size='sm'
           onClick={toggleTheme}
-          className="rounded-md border border-border bg-surface px-3 py-2 text-sm font-medium hover:bg-muted"
         >
           Toggle theme
-        </button>
+        </Button>
       </header>
 
       <section className="grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -45,7 +48,7 @@ function App() {
         ))}
       </section>
 
-      <section className="rounded-xl border border-border bg-surface p-6 text-surface-foreground shadow-sm">
+      <Card>
         <h2 className="text-lg font-semibold">Sign in</h2>
         <p className="mb-6 text-sm text-muted-foreground">
           A card built only from token classes.
@@ -55,53 +58,34 @@ function App() {
           <label htmlFor="email" className="text-sm font-medium">
             Email
           </label>
-          <input
+          <Input
             id="email"
             type="email"
             placeholder="you@example.com"
-            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground"
+            invalid
           />
           <p className="text-sm text-destructive">Please enter a valid email address.</p>
         </div>
 
         <div className="mt-6 flex flex-wrap gap-3">
-          <button
-            type="button"
-            className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-          >
+          <Button>
             Primary
-          </button>
-          <button
-            type="button"
-            className="rounded-md bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground hover:bg-secondary/80"
-          >
+          </Button>
+          <Button variant='secondary'>
             Secondary
-          </button>
-          <button
-            type="button"
-            className="rounded-md border border-border px-4 py-2 text-sm font-medium hover:bg-muted"
-          >
+          </Button>
+          <Button variant='outline'>
             Outline
-          </button>
-          <button
-            type="button"
-            className="rounded-md px-4 py-2 text-sm font-medium hover:bg-muted"
-          >
+          </Button>
+          <Button variant='ghost'>
             Ghost
-          </button>
-          <button
-            type="button"
-            className="rounded-md bg-destructive px-4 py-2 text-sm font-medium text-destructive-foreground hover:bg-destructive/90"
-          >
+          </Button>
+          <Button variant='destructive'>
             Destructive
-          </button>
-          <button
-            type="button"
-            disabled
-            className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground disabled:opacity-50"
-          >
+          </Button>
+          <Button disabled>
             Disabled
-          </button>
+          </Button>
         </div>
 
         <p className="mt-6 text-sm text-success">Account created successfully.</p>
@@ -111,7 +95,7 @@ function App() {
             Sign up
           </a>
         </p>
-      </section>
+      </Card>
     </main>
   )
 }
