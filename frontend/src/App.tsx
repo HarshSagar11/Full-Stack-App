@@ -30,11 +30,7 @@ function App() {
             Temporary preview of the light and dark themes.
           </p>
         </div>
-        <Button
-          variant='outline'
-          size='sm'
-          onClick={toggleTheme}
-        >
+        <Button variant="outline" size="sm" onClick={toggleTheme}>
           Toggle theme
         </Button>
       </header>
@@ -50,42 +46,23 @@ function App() {
 
       <Card>
         <h2 className="text-lg font-semibold">Sign in</h2>
-        <p className="mb-6 text-sm text-muted-foreground">
-          A card built only from token classes.
-        </p>
+        <p className="mb-6 text-sm text-muted-foreground">A card built only from token classes.</p>
 
         <div className="space-y-2">
           <label htmlFor="email" className="text-sm font-medium">
             Email
           </label>
-          <Input
-            id="email"
-            type="email"
-            placeholder="you@example.com"
-            invalid
-          />
+          <Input id="email" type="email" placeholder="you@example.com" invalid />
           <p className="text-sm text-destructive">Please enter a valid email address.</p>
         </div>
 
         <div className="mt-6 flex flex-wrap gap-3">
-          <Button>
-            Primary
-          </Button>
-          <Button variant='secondary'>
-            Secondary
-          </Button>
-          <Button variant='outline'>
-            Outline
-          </Button>
-          <Button variant='ghost'>
-            Ghost
-          </Button>
-          <Button variant='destructive'>
-            Destructive
-          </Button>
-          <Button disabled>
-            Disabled
-          </Button>
+          <Button>Primary</Button>
+          <Button variant="secondary">Secondary</Button>
+          <Button variant="outline">Outline</Button>
+          <Button variant="ghost">Ghost</Button>
+          <Button variant="destructive">Destructive</Button>
+          <Button disabled>Disabled</Button>
         </div>
 
         <p className="mt-6 text-sm text-success">Account created successfully.</p>
