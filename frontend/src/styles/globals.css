@@ -1,0 +1,128 @@
+/*
+ * Global styles and design tokens.
+ *
+ * - Tokens are CSS variables defined once for light (:root) and dark (.dark).
+ * - @theme inline exposes them to Tailwind, so components use classes like
+ *   bg-surface, text-muted-foreground, border-border, bg-primary.
+ * - Components must use these tokens, never raw palette colors (bg-zinc-900),
+ *   so both themes stay consistent. See docs/design-system.md.
+ *
+ * Colors are OKLCH values from Tailwind's zinc / indigo / red / green palettes.
+ */
+
+@import 'tailwindcss';
+
+/* `dark:` variants follow the .dark class on <html> (set in index.html). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+
+  --radius: 0.625rem;
+
+  --background: oklch(0.985 0 0); /* zinc-50 */
+  --foreground: oklch(0.141 0.005 285.823); /* zinc-950 */
+
+  --surface: oklch(1 0 0); /* white */
+  --surface-foreground: oklch(0.141 0.005 285.823); /* zinc-950 */
+
+  --muted: oklch(0.967 0.001 286.375); /* zinc-100 */
+  --muted-foreground: oklch(0.552 0.016 285.938); /* zinc-500 */
+
+  --border: oklch(0.92 0.004 286.32); /* zinc-200 */
+  --input: oklch(0.92 0.004 286.32); /* zinc-200 */
+  --ring: oklch(0.585 0.233 277.117); /* indigo-500 */
+
+  --primary: oklch(0.511 0.262 276.966); /* indigo-600 */
+  --primary-foreground: oklch(1 0 0); /* white */
+
+  --secondary: oklch(0.967 0.001 286.375); /* zinc-100 */
+  --secondary-foreground: oklch(0.21 0.006 285.885); /* zinc-900 */
+
+  --destructive: oklch(0.577 0.245 27.325); /* red-600 */
+  --destructive-foreground: oklch(1 0 0); /* white */
+
+  --success: oklch(0.527 0.154 150.069); /* green-700 */
+}
+
+.dark {
+  color-scheme: dark;
+
+  --background: oklch(0.141 0.005 285.823); /* zinc-950 */
+  --foreground: oklch(0.985 0 0); /* zinc-50 */
+
+  --surface: oklch(0.21 0.006 285.885); /* zinc-900 */
+  --surface-foreground: oklch(0.985 0 0); /* zinc-50 */
+
+  --muted: oklch(0.274 0.006 286.033); /* zinc-800 */
+  --muted-foreground: oklch(0.705 0.015 286.067); /* zinc-400 */
+
+  --border: oklch(0.274 0.006 286.033); /* zinc-800 */
+  --input: oklch(0.274 0.006 286.033); /* zinc-800 */
+  --ring: oklch(0.673 0.182 276.935); /* indigo-400 */
+
+  /* Lighter accent + dark text keeps contrast at WCAG AA on dark surfaces. */
+  --primary: oklch(0.673 0.182 276.935); /* indigo-400 */
+  --primary-foreground: oklch(0.141 0.005 285.823); /* zinc-950 */
+
+  --secondary: oklch(0.274 0.006 286.033); /* zinc-800 */
+  --secondary-foreground: oklch(0.985 0 0); /* zinc-50 */
+
+  --destructive: oklch(0.704 0.191 22.216); /* red-400 */
+  --destructive-foreground: oklch(0.141 0.005 285.823); /* zinc-950 */
+
+  --success: oklch(0.792 0.209 151.711); /* green-400 */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  /* Tailwind's default border color is currentColor; use the token instead. */
+  *,
+  ::before,
+  ::after,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border);
+  }
+
+  body {
+    min-height: 100svh;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition:
+      background-color 150ms ease,
+      color 150ms ease;
+  }
+
+  /* Visible focus outline for keyboard users only (not on mouse click). */
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+}
