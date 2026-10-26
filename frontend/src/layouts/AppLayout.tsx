@@ -1,4 +1,5 @@
 import { Link, NavLink, Outlet } from 'react-router'
+import { ApiStatus } from '../components/ApiStatus'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { cn } from '../lib/cn'
 
@@ -7,9 +8,12 @@ export function AppLayout() {
     <div className="min-h-svh">
       <header className="border-b border-border bg-surface">
         <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
-          <Link to="/" className="font-semibold">
-            Full Stack App
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link to="/" className="font-semibold">
+              Full Stack App
+            </Link>
+            <ApiStatus />
+          </div>
           <div className="flex items-center gap-4">
             <nav className="flex items-center gap-4 text-sm">
               <NavLink
