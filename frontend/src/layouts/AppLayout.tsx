@@ -1,4 +1,5 @@
 import { Link, NavLink, Outlet } from 'react-router'
+import { ThemeToggle } from '../components/ThemeToggle'
 import { cn } from '../lib/cn'
 
 export function AppLayout() {
@@ -9,20 +10,26 @@ export function AppLayout() {
           <Link to="/" className="font-semibold">
             Full Stack App
           </Link>
-          <nav className="flex items-center gap-4 text-sm">
-            <NavLink
-              to="/"
-              end
-              className={({ isActive }) =>
-                cn('hover:text-foreground', isActive ? 'text-foreground' : 'text-muted-foreground')
-              }
-            >
-              Home
-            </NavLink>
-            <Link to="/login" className="text-muted-foreground hover:text-foreground">
-              Log in
-            </Link>
-          </nav>
+          <div className="flex items-center gap-4">
+            <nav className="flex items-center gap-4 text-sm">
+              <NavLink
+                to="/"
+                end
+                className={({ isActive }) =>
+                  cn(
+                    'hover:text-foreground',
+                    isActive ? 'text-foreground' : 'text-muted-foreground',
+                  )
+                }
+              >
+                Home
+              </NavLink>
+              <Link to="/login" className="text-muted-foreground hover:text-foreground">
+                Log in
+              </Link>
+            </nav>
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
